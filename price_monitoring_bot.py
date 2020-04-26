@@ -21,9 +21,12 @@ def check_price():
         product_price = product_info.find('div', class_='price')
         print(product_name.text)
         print(product_price.text)
-        if float(product_price.text) < 1000:
-            send_message(product_name.text, product_price.text)
+        try:
+            if float(product_price.text) < 1000:
+                send_message(product_name.text, product_price.text)
+        except:
+            print("Cannot Convert to float")
 
 while(True):
     check_price()
-    time.delay(60*60*12)
+    time.sleep(60*60*12)
